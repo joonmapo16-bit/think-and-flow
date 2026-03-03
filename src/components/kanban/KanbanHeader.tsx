@@ -2,19 +2,20 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
   LayoutGrid,
-  MessageSquare,
   Search,
   Save,
   Sparkles,
+  Loader2,
 } from "lucide-react";
 
 interface Props {
   onToggleChat: () => void;
   chatOpen: boolean;
   onSave: () => void;
+  saving?: boolean;
 }
 
-export function KanbanHeader({ onToggleChat, chatOpen, onSave }: Props) {
+export function KanbanHeader({ onToggleChat, chatOpen, onSave, saving }: Props) {
   return (
     <header className="flex items-center justify-between px-6 py-4 border-b bg-card/80 backdrop-blur-sm sticky top-0 z-40">
       <div className="flex items-center gap-4">
@@ -38,10 +39,11 @@ export function KanbanHeader({ onToggleChat, chatOpen, onSave }: Props) {
           variant="outline"
           size="sm"
           onClick={onSave}
+          disabled={saving}
           className="gap-2"
         >
-          <Save className="w-4 h-4" />
-          <span className="hidden sm:inline">Save</span>
+          {saving ? <Loader2 className="w-4 h-4 animate-spin" /> : <Save className="w-4 h-4" />}
+          <span className="hidden sm:inline">{saving ? "Saving..." : "Save"}</span>
         </Button>
         <Button
           variant={chatOpen ? "default" : "outline"}
