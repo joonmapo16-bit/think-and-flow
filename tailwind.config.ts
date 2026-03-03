@@ -57,6 +57,11 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        kanban: {
+          todo: "hsl(var(--kanban-todo))",
+          progress: "hsl(var(--kanban-progress))",
+          done: "hsl(var(--kanban-done))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
